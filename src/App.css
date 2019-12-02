@@ -10,7 +10,7 @@
 }
 
 a{
-    color: #647b7c;
+    color: #3c5b6e;
     text-decoration: underline;
 }
 
@@ -32,8 +32,16 @@ a{
     }
 }
 
+.info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .info-container{
     position: relative;
+    left: 0;
+    transition: 1s;
     padding: 10px;
     height: 100%;
 }
@@ -84,14 +92,23 @@ a{
 }
 
 .info-title{
-    color: #e9444496;
+    color: #e944448e;
     font-family: 'VT323', monospace;
     margin-bottom: 60px;
+    font-size: 2.7em;
 }
 
 .info-text{
-    color: #fbe8ff70;
+    color: rgba(255, 255, 255, 0.5);
     line-height: 1.3em;
     font-family: 'VT323', monospace;
     white-space: pre;
+}
+
+#label{
+    color: rgba(255, 255, 255, 0.3);
+}
+
+#end{
+    color: rgba(255, 255, 255, 0.1);
 }

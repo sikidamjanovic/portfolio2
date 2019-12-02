@@ -21,11 +21,11 @@ class PersonalInfo extends Component {
                 that.setState({
                     showSearching: false
                 })
-            }, 2000)
+            }, 1000)
             that.setState({
                 changeTitle: true
             })
-        }, 2000)
+        }, 1000)
     }
 
     renderTyped(){
@@ -38,7 +38,6 @@ class PersonalInfo extends Component {
                             color="#7ec6e280"
                             height={30}
                             width={30}
-                            timeout={4000}
                         />
                     </Fade>
                 </div>
@@ -50,12 +49,22 @@ class PersonalInfo extends Component {
                     <Typed
                         className="info-text"
                         strings={[
-                            'NAME: Sinisa Damjanovic\nEMAIL: sikidamjanovic@gmail.com\nSKILL: Full-stack Developer / Designer\nTOOLS: React, Javascript, HTML + CSS\n\nPROJECTS: \n - Cowrite.io [<a href="https://github.com/sikidamjanovic/cowrite">Repo</a>][<a href="https://www.cowrite.io">Demo</a>]\n - Kino Movie [<a href="">Repo</a>][<a href="">Demo</a>]\n - Reactriv [<a href="">Repo</a>][<a href="">Demo</a>]\n\n[<a id="bottom-link" href="https://github.com/sikidamjanovic" target="_blank">Github</a>] [<a id="bottom-link" href="https://www.linkedin.com/in/sinisa-damjanovic-673053bb/" target="_blank">LinkedIn</a>] [<a id="bottom-link" href="">Resume</a>]'
+                            '<span id="label">NAME:</span> Sinisa Damjanovic\n<span id="label">EMAIL:</span> sikidamjanovic@gmail.com\n<span id="label">LOCATION:</span> Toronto Area\n<span id="label">SKILL:</span> Web Developer / Designer\n<span id="label">TOOLS:</span> React, Javascript, HTML + CSS\n\n<span id="label">PROJECTS:</span> \n - Cowrite.io [<a target="_blank" href="https://github.com/sikidamjanovic/cowrite">Repo</a>][<a target="_blank" href="https://www.cowrite.io">Demo</a>]\n - Kino Movie [<a target="_blank" href="https://github.com/sikidamjanovic/kino">Repo</a>][<a target="_blank" href="https://kino-7425a.firebaseapp.com/">Demo</a>]\n - Reactriv [<a target="_blank" href="https://github.com/sikidamjanovic/reactriv">Repo</a>][<a target="_blank" href="https://reactriv.firebaseapp.com/">Demo</a>]\n\n<span id=label>LINKS: </span>[<a id="bottom-link" href="https://github.com/sikidamjanovic" target="_blank">Github</a>] [<a id="bottom-link" href="https://www.linkedin.com/in/sinisa-damjanovic-673053bb/" target="_blank">LinkedIn</a>] [<a id="bottom-link" href="">Resume</a>] '
                         ]}
-                        typeSpeed={5}
+                        typeSpeed={1}
                     />
                 </div>
             )
+        }
+    }
+
+    expandStyle(){
+        if(this.state.changeTitle){
+            return null
+        }else{
+            return({
+                width: '30px'
+            })
         }
     }
 
@@ -66,7 +75,7 @@ class PersonalInfo extends Component {
                 <Fade>
                     {!this.state.changeTitle ?
                         <div>
-                            <h1 className="info-title">SEARCHING...</h1>
+                            <h1 className="info-title">SEARCHING DATABASE</h1>
                         </div> :
                         <Fade>
                             <div>
@@ -76,12 +85,17 @@ class PersonalInfo extends Component {
                     }
                 </Fade>
 
-                <div className="info-container">
-                    <div className="info-corners-top">
-                        <div className="info-corners-bottom"></div>
+                <div style={{ display: 'flex', flexDirection: 'row' }}>
+
+                    <div className="info-container" style={this.expandStyle()}>
+                        <div className="info-corners-top">
+                            <div className="info-corners-bottom"></div>
+                        </div>
+                        {this.renderTyped()}
                     </div>
-                    {this.renderTyped()}
+
                 </div>
+
             </div>
         )
   }
